@@ -1,12 +1,9 @@
-# Your Name Here
+# Garrick McDonald
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
+# 23 October 2024
+# Lab 07
+# Lab Section: 12 
 # Sources, people worked with, help given to: 
-# your
-# comments
-# here
 
 
 # Prompt the user for an upper bound 
@@ -18,6 +15,14 @@
 # You will continue to prompt the user until a proper integer value is entered
 
 factorial = 1
+
+while True:
+    upper_bound = input("Please enter an upper bound: ")
+    if upper_bound.isdigit():
+        upper_bound = int(upper_bound)
+        for i in range(1, upper_bound + 1):
+            factorial = factorial * i
+        break
 
 print(f"The result of the factorial based on the given bound is {factorial}")
 
@@ -39,6 +44,15 @@ print("*"*75)
 
 num_sum = 0 
 
+while True:
+    user_input = input("Enter an integral to add to the sum or 'exit' to end ")
+    if user_input == 'exit':
+        break
+    elif user_input.lstrip('-').isdigit():  
+        num_sum += int(user_input)
+    else:
+        print("Thats not a valid input")
+        
 print(f"Your final sum is {num_sum}")
 
 print("*"*75)
@@ -59,4 +73,47 @@ print("*"*75)
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
 
-        
+while True:
+    calc_input = input("Enter a calculation or type 'exit' to finish: ")
+    if calc_input.lower() == 'exit':
+        break
+    calc_input = calc_input.replace(" ","")
+    if '+' in calc_input:
+        operands = calc_input.split('+')
+        operator = '+'
+    elif '-' in calc_input:
+        operands = calc_input.split('-')
+        operator = '-'
+    elif '*' in calc_input:
+        operands = calc_input.split('*')
+        operator = '*'
+    elif '/' in calc_input:
+        operands = calc_input.split('/')
+        operator = '/'
+    elif '%' in calc_input:
+        operands = calc_input.split('%')
+        operator = '%'
+    else:
+        print("Invalid input or operator. Please try again.")
+        continue
+    if operands[0].isdigit() and operands[1].isdigit():
+        operand1 = int(operands[0])
+        operand2 = int(operands[1])
+    if operator == '+':
+        result = operand1 + operand2
+    elif operator == '-':
+        result = operand1 - operand2
+    elif operator == '*':
+        result = operand1 * operand2
+    elif operator == '/':
+        if operand2 != 0:
+            result = operand1 / operand2
+        else:
+            print("Cannot divide by zero.")
+            continue
+    elif operator == '%':
+        result = operand1 % operand2
+
+    print(f"The result of {operand1} {operator} {operand2} is {result}")
+   
+    
